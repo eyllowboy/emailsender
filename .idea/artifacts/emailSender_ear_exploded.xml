@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-ear" name="emailSender:ear exploded">
+    <output-path>$PROJECT_DIR$/out/artifacts/emailSender_ear_exploded</output-path>
+    <root id="root">
+      <element id="javaee-facet-resources" facet="emailSender/javaeeApplication/javaEEApplication" />
+    </root>
+  </artifact>
+</component>
