@@ -1,9 +1,8 @@
 package com.sendemail.servlet;
 
-import com.sendemail.converter.PDFout;
+import com.sendemail.converter.CreatePdf;
 import com.sendemail.service.EmailService;
 import com.sendemail.service.SendMail;
-import org.docx4j.openpackaging.exceptions.Docx4JException;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
@@ -31,12 +30,9 @@ public class EmailServlet extends HttpServlet {
            }
            System.out.println(body);
            String json = body.toString();
-           try {
-              String s= getServletContext().getRealPath("document.docx");
-               PDFout.savePDF(json,s);
-           } catch (Docx4JException e) {
-               e.printStackTrace();
-           }
+          CreatePdf pdf = new CreatePdf();
+          pdf.create("",json);
+
            emailService = new EmailService();
            List<String> em = emailService.getEmails();
            SendMail.sendEmail(em);
