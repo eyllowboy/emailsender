@@ -6,12 +6,5 @@
   <display-name>Archetype Created Web Application</display-name>
 
 
-  <servlet>
-    <servlet-name>EmailServlet</servlet-name>
-    <servlet-class>com.sendemail.servlet.EmailServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>EmailServlet</servlet-name>
-    <url-pattern>/EmailServlet</url-pattern>
-  </servlet-mapping>
+
 </web-app>
