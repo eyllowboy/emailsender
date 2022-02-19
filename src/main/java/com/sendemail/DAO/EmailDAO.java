@@ -6,8 +6,8 @@ import java.util.List;
 
 public class EmailDAO {
 
-    //private String jdbcURL = "jdbc:postgresql://34.116.245.1:5432/maildb?useSSL=false";
-    private String jdbcURL = "jdbc:postgresql:///10.186.0.7:5432/maildb?useSSL=false";
+    private String jdbcURL = "jdbc:postgresql://34.116.245.1:5432/maildb?useSSL=false";
+   // private String jdbcURL = "jdbc:postgresql://34.116.245.1:5432/maildb?useSSL=false";
     private String jdbcUsername = "mail";
     private String jdbcPassword = "strongpassword";
     private static final String SELECT_ALL_EMAILS = "select * from emails";
