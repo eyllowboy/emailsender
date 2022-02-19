@@ -36,6 +36,9 @@ public class EmailServlet extends HttpServlet {
            emailService = new EmailService();
            List<String> em = emailService.getEmails();
            SendMail.sendEmail(em);
+           RequestDispatcher requestDispatcher = request.getRequestDispatcher("WEB-INF/date.jsp");
+
+           requestDispatcher.forward(request, response);
        }catch (Exception e){
            e.printStackTrace();
        }
