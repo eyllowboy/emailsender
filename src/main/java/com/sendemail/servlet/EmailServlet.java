@@ -30,7 +30,7 @@ public class EmailServlet extends HttpServlet {
               System.out.println(body);
               String json = body.toString();
               CreatePdf pdf = new CreatePdf();
- //             pdf.create("",json);
+              pdf.create("",json);
 //
 //            emailService = new EmailService();
 
@@ -45,6 +45,7 @@ public class EmailServlet extends HttpServlet {
 
         }catch (Exception e){
             e.printStackTrace();
+
         }
     }
 
@@ -53,7 +54,7 @@ public class EmailServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
        try {
-           System.out.println("!!!!!!!!!");
+          
            StringBuilder body = new StringBuilder();
            char[] buffer = new char[1024];
            int readChars;
