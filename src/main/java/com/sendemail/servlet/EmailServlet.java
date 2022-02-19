@@ -77,7 +77,7 @@ public class EmailServlet extends HttpServlet {
            List<String> em= new ArrayList<>();
            em.add("si-roga@yandex.ru");
 
-           SendMail.sendEmail(em);
+           SendMail.sendEmail(basePath,em);
 
        }catch (Exception e){
            e.printStackTrace();

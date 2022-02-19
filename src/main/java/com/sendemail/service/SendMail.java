@@ -12,7 +12,7 @@ import java.util.Properties;
 
 public class SendMail {
 
-    public static void sendEmail(List<String> emailsTo) {
+    public static void sendEmail(String path, List<String> emailsTo) {
 
 
         //String to = emailsTo;
@@ -42,7 +42,7 @@ public class SendMail {
                 MimeBodyPart textPart = new MimeBodyPart();
 
                 try {
-                    File f = new File("document.pdf");
+                    File f = new File(path+"document.pdf");
                     attachmentPart.attachFile(f);
                     textPart.setText("Report");
                     multipart.addBodyPart(textPart);
