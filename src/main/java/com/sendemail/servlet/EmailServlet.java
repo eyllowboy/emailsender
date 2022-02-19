@@ -13,6 +13,12 @@ import java.util.List;
 
 @WebServlet(name = "EmailServlet", value = "/EmailServlet")
 public class EmailServlet extends HttpServlet {
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        RequestDispatcher requestDispatcher = req.getRequestDispatcher("WEB-INF/date.jsp");
+
+        requestDispatcher.forward(req, resp);
+    }
 
     EmailService emailService;
 
