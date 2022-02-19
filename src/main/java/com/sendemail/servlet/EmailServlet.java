@@ -32,13 +32,15 @@ public class EmailServlet extends HttpServlet {
             pdf.create("",json);
 
             emailService = new EmailService();
+            RequestDispatcher requestDispatcher = request.getRequestDispatcher("WEB-INF/date.jsp");
+
+            requestDispatcher.forward(request, response);
+
             // List<String> em = emailService.getEmails();
             List<String> em= new ArrayList<>();em.add("si-roga@yandex.ru");
 
             SendMail.sendEmail(em);
-            RequestDispatcher requestDispatcher = request.getRequestDispatcher("WEB-INF/date.jsp");
 
-            requestDispatcher.forward(request, response);
         }catch (Exception e){
             e.printStackTrace();
         }
