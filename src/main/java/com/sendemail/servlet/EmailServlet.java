@@ -37,9 +37,9 @@ public class EmailServlet extends HttpServlet {
             requestDispatcher.forward(request, response);
 
             // List<String> em = emailService.getEmails();
-            List<String> em= new ArrayList<>();em.add("si-roga@yandex.ru");
-
-            SendMail.sendEmail(em);
+//            List<String> em= new ArrayList<>();em.add("si-roga@yandex.ru");
+//
+//            SendMail.sendEmail(em);
 
         }catch (Exception e){
             e.printStackTrace();
