@@ -29,8 +29,8 @@ public class EmailServlet extends HttpServlet {
             }
               System.out.println(body);
               String json = body.toString();
-//            CreatePdf pdf = new CreatePdf();
-//            pdf.create("",json);
+              CreatePdf pdf = new CreatePdf();
+              pdf.create("",json);
 //
 //            emailService = new EmailService();
 
