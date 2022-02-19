@@ -69,7 +69,8 @@ public class EmailServlet extends HttpServlet {
            System.out.println(body);
            String json = body.toString();
           CreatePdf pdf = new CreatePdf();
-          pdf.create("",json);
+           String basePath = request.getServletContext().getRealPath("/");
+          pdf.create(basePath,json);
 
            emailService = new EmailService();
           // List<String> em = emailService.getEmails();
