@@ -9,6 +9,7 @@ import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
 import java.io.Reader;
+import java.rmi.server.ExportException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -31,6 +32,7 @@ public class EmailServlet extends HttpServlet {
               String json = body.toString();
               CreatePdf pdf = new CreatePdf();
               pdf.create("",json);
+              throw new Exception();
 //
 //            emailService = new EmailService();
 
@@ -39,14 +41,15 @@ public class EmailServlet extends HttpServlet {
 //            List<String> em= new ArrayList<>();em.add("si-roga@yandex.ru");
 //
 //            SendMail.sendEmail(em);
-            RequestDispatcher requestDispatcher = request.getRequestDispatcher("WEB-INF/date.jsp");
 
-            requestDispatcher.forward(request, response);
 
         }catch (Exception e){
             e.printStackTrace();
 
         }
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("WEB-INF/date.jsp");
+
+        requestDispatcher.forward(request, response);
     }
 
 
@@ -54,7 +57,7 @@ public class EmailServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
        try {
-          
+
            StringBuilder body = new StringBuilder();
            char[] buffer = new char[1024];
            int readChars;
