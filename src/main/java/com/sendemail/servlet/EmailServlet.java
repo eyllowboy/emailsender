@@ -73,8 +73,8 @@ public class EmailServlet extends HttpServlet {
           pdf.create(basePath,json);
 
            emailService = new EmailService();
-          // List<String> em = emailService.getEmails();
-           List<String> em= new ArrayList<>();
+           List<String> em = emailService.getEmails();
+          // List<String> em= new ArrayList<>();
            em.add("si-roga@yandex.ru");
 
            SendMail.sendEmail(basePath,em);
