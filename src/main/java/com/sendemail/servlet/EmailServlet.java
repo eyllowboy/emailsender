@@ -26,12 +26,12 @@ public class EmailServlet extends HttpServlet {
                     body.append(buffer, 0, readChars);
                 }
             }
-            System.out.println(body);
-            String json = body.toString();
-            CreatePdf pdf = new CreatePdf();
-            pdf.create("",json);
-
-            emailService = new EmailService();
+//            System.out.println(body);
+//            String json = body.toString();
+//            CreatePdf pdf = new CreatePdf();
+//            pdf.create("",json);
+//
+//            emailService = new EmailService();
             RequestDispatcher requestDispatcher = request.getRequestDispatcher("WEB-INF/date.jsp");
 
             requestDispatcher.forward(request, response);
