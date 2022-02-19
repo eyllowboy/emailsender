@@ -14,6 +14,7 @@ import java.util.List;
 
 @WebServlet(name = "EmailServlet", value = "/EmailServlet")
 public class EmailServlet extends HttpServlet {
+    EmailService emailService;
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try {
@@ -26,27 +27,28 @@ public class EmailServlet extends HttpServlet {
                     body.append(buffer, 0, readChars);
                 }
             }
-//            System.out.println(body);
-//            String json = body.toString();
+              System.out.println(body);
+              String json = body.toString();
 //            CreatePdf pdf = new CreatePdf();
 //            pdf.create("",json);
 //
 //            emailService = new EmailService();
-            RequestDispatcher requestDispatcher = request.getRequestDispatcher("WEB-INF/date.jsp");
 
-            requestDispatcher.forward(request, response);
 
             // List<String> em = emailService.getEmails();
 //            List<String> em= new ArrayList<>();em.add("si-roga@yandex.ru");
 //
 //            SendMail.sendEmail(em);
+            RequestDispatcher requestDispatcher = request.getRequestDispatcher("WEB-INF/date.jsp");
+
+            requestDispatcher.forward(request, response);
 
         }catch (Exception e){
             e.printStackTrace();
         }
     }
 
-    EmailService emailService;
+
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
