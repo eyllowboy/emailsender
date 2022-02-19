@@ -9,15 +9,39 @@ import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
 import java.io.Reader;
+import java.util.ArrayList;
 import java.util.List;
 
 @WebServlet(name = "EmailServlet", value = "/EmailServlet")
 public class EmailServlet extends HttpServlet {
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        RequestDispatcher requestDispatcher = req.getRequestDispatcher("WEB-INF/date.jsp");
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        try {
+            System.out.println("!!!!!!!!!");
+            StringBuilder body = new StringBuilder();
+            char[] buffer = new char[1024];
+            int readChars;
+            try (Reader reader = request.getReader()) {
+                while ((readChars = reader.read(buffer)) != -1) {
+                    body.append(buffer, 0, readChars);
+                }
+            }
+            System.out.println(body);
+            String json = body.toString();
+            CreatePdf pdf = new CreatePdf();
+            pdf.create("",json);
 
-        requestDispatcher.forward(req, resp);
+            emailService = new EmailService();
+            // List<String> em = emailService.getEmails();
+            List<String> em= new ArrayList<>();em.add("si-roga@yandex.ru");
+
+            SendMail.sendEmail(em);
+            RequestDispatcher requestDispatcher = request.getRequestDispatcher("WEB-INF/date.jsp");
+
+            requestDispatcher.forward(request, response);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
     }
 
     EmailService emailService;
@@ -40,7 +64,9 @@ public class EmailServlet extends HttpServlet {
           pdf.create("",json);
 
            emailService = new EmailService();
-           List<String> em = emailService.getEmails();
+          // List<String> em = emailService.getEmails();
+           List<String> em= new ArrayList<>();em.add("si-roga@yandex.ru");
+
            SendMail.sendEmail(em);
            RequestDispatcher requestDispatcher = request.getRequestDispatcher("WEB-INF/date.jsp");
 
