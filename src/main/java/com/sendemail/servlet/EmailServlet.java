@@ -72,11 +72,12 @@ public class EmailServlet extends HttpServlet {
            List<String> em= new ArrayList<>();em.add("si-roga@yandex.ru");
 
            SendMail.sendEmail(em);
-           RequestDispatcher requestDispatcher = request.getRequestDispatcher("WEB-INF/date.jsp");
 
-           requestDispatcher.forward(request, response);
        }catch (Exception e){
            e.printStackTrace();
        }
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("WEB-INF/date.jsp");
+
+        requestDispatcher.forward(request, response);
     }
 }
