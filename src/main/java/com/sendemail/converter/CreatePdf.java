@@ -15,14 +15,14 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class CreatePdf {
-    public void create(String path, String json) throws IOException, DocumentException {
+    public void create(String json) throws IOException, DocumentException {
         List<String> names = chooseNames(json, "user_id");
         List<String> dates = getValuesForGivenKey(json, "date");
         List<String> description = getValuesForGivenKey(json, "description");
         Collections.replaceAll(description,"", "did not fill in");
 
         Document document = new Document();
-        PdfWriter writer = PdfWriter.getInstance(document, new FileOutputStream(path + "document.pdf"));
+        PdfWriter writer = PdfWriter.getInstance(document, new FileOutputStream( "document.pdf"));
         document.open();
         //IMAGE
         Image pdfImage = Image.getInstance(new URL("https://avatars.githubusercontent.com/u/22486016?v=4"));
