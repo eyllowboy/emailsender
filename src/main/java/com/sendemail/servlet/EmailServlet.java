@@ -30,7 +30,7 @@ public class EmailServlet extends HttpServlet {
               System.out.println(body);
               String json = body.toString();
               CreatePdf pdf = new CreatePdf();
-              pdf.create("",json);
+ //             pdf.create("",json);
 //
 //            emailService = new EmailService();
 
@@ -69,7 +69,8 @@ public class EmailServlet extends HttpServlet {
 
            emailService = new EmailService();
           // List<String> em = emailService.getEmails();
-           List<String> em= new ArrayList<>();em.add("si-roga@yandex.ru");
+           List<String> em= new ArrayList<>();
+           em.add("si-roga@yandex.ru");
 
            SendMail.sendEmail(em);
 
