@@ -16,10 +16,13 @@ import java.util.stream.IntStream;
 
 public class CreatePdf {
     public void create(String path, String json) throws IOException, DocumentException {
-        List<String> names = chooseNames(json, "user_id");
+        List<String> names = getValuesForGivenKey(json, "fio");
         List<String> dates = getValuesForGivenKey(json, "date");
+        JSONObject jsonObject = new JSONObject(dates.get(0));
+        String month = jsonObject.getString("month");
+        int dayOfMonth = jsonObject.getInt("dayOfMonth");
         List<String> description = getValuesForGivenKey(json, "description");
-        Collections.replaceAll(description,"", "did not fill in");
+        Collections.replaceAll(description, "", "did not fill in");
 
         Document document = new Document();
         PdfWriter writer = PdfWriter.getInstance(document, new FileOutputStream(path + "document.pdf"));
@@ -35,7 +38,7 @@ public class CreatePdf {
         head.setSpacingAfter(10);
         document.add(head);
         //REPORT
-        Paragraph date = new Paragraph("Report on " + dates.get(0), font);
+        Paragraph date = new Paragraph("Report on " + month + " " + dayOfMonth, font);
         date.setAlignment(Element.ALIGN_CENTER);
         date.setSpacingAfter(10);
         document.add(date);
@@ -44,7 +47,6 @@ public class CreatePdf {
         document.close();
         writer.close();
     }
-
     private List<String> getValuesForGivenKey(String jsonArrayStr, String key) {
         JSONArray jsonArray = new JSONArray(jsonArrayStr);
         return IntStream.range(0, jsonArray.length())
